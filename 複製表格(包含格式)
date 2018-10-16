@@ -1,0 +1,14 @@
+Sub test()
+Worksheets("sheet1").Range("a37:g56").Copy
+With CreateObject("word.application")
+    .Visible = True
+    With .documents.Add
+        .PageSetup.Orientation = 1
+        .Range.PasteSpecial
+        With .Tables(1)
+            .PreferredWidthType = 3
+            .PreferredWidth = .Application.CentimetersToPoints(18)
+        End With
+    End With
+End With
+End Sub
